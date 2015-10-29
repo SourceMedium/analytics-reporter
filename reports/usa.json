@@ -245,6 +245,228 @@
         "name": "Participating second-level domains.",
         "description": "Participating second-level domains over the last 2 weeks."
       }
+    },
+    {
+      "name": "top-downloads-realtime",
+      "frequency": "realtime",
+      "realtime": true,
+      "query": {
+        "dimensions": ["rt:pageTitle", "rt:eventLabel", "rt:pagePath"],
+        "metrics": ["rt:totalEvents"],
+        "filters": ["rt:eventCategory=~ownload"],
+        "sort": "-rt:totalEvents",
+        "max-results": "100"
+      },
+      "meta": {
+        "name": "Top Downloads (Live)",
+        "description": "Top downloads for active onsite users"
+      }
+    },
+    {
+      "name": "top-downloads-7-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:pageTitle", "ga:eventLabel", "ga:pagePath"],
+        "metrics": ["ga:totalEvents"],
+        "filters": ["ga:eventCategory=~ownload"],
+        "start-date": "7daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:totalEvents",
+        "max-results": "100"
+      },
+      "meta": {
+        "name": "Top Downloads (7 Days)",
+        "description": "Top downloads in the last 7 days."
+      }
+    },
+    {
+      "name": "top-downloads-30-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:pageTitle", "ga:eventLabel", "ga:pagePath"],
+        "metrics": ["ga:totalEvents"],
+        "filters": ["ga:eventCategory=~ownload"],
+        "start-date": "30daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:totalEvents",
+        "max-results": "100"
+      },
+      "meta": {
+        "name": "Top Downloads (30 Days)",
+        "description": "Top downloads in the last 30 days."
+      }
+    },
+    {
+      "name": "top-cities-realtime",
+      "frequency": "realtime",
+      "realtime": true,
+      "query": {
+        "dimensions": ["rt:city"],
+        "metrics": ["rt:activeUsers"],
+        "sort": "-rt:activeUsers"
+      },
+      "meta": {
+        "name": "Top Cities (Live)",
+        "description": "Top cities for active onsite users."
+      }
+    },
+    {
+      "name": "top-cities-7-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:city"],
+        "metrics": ["ga:pageviews"],
+        "start-date": "7daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:pageviews"
+      },
+      "meta": {
+        "name": "Top Cities (7 Days)",
+        "description": "Top cities in the last 7 days."
+      }
+    },
+    {
+      "name": "top-cities-30-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:city"],
+        "metrics": ["ga:pageviews"],
+        "start-date": "30daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:pageviews"
+      },
+      "meta": {
+        "name": "Top Cities (30 Days)",
+        "description": "Top cities in the last 30 days."
+      }
+    },
+    {
+      "name": "top-cities-90-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:city"],
+        "metrics": ["ga:pageviews"],
+        "start-date": "90daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:pageviews"
+      },
+      "meta": {
+        "name": "Top Cities (90 Days)",
+        "description": "Top cities in the last 90 days."
+      }
+    },
+    {
+      "name": "top-countries-realtime",
+      "frequency": "realtime",
+      "realtime": true,
+      "query": {
+        "dimensions": ["rt:country"],
+        "metrics": ["rt:activeUsers"],
+        "sort": "-rt:activeUsers"
+      },
+      "meta": {
+        "name": "Top Cities",
+        "description": "Top countries for active onsite users."
+      }
+    },
+    {
+      "name": "top-countries-7-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:country"],
+        "metrics": ["ga:pageviews"],
+        "start-date": "7daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:pageviews"
+      },
+      "meta": {
+        "name": "Top Cities (7 Days)",
+        "description": "Top countries in the last 7 days."
+      }
+    },
+    {
+      "name": "top-countries-30-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:country"],
+        "metrics": ["ga:pageviews"],
+        "start-date": "30daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:pageviews"
+      },
+      "meta": {
+        "name": "Top Cities (30 Days)",
+        "description": "Top countries in the last 30 days."
+      }
+    },
+    {
+      "name": "top-countries-90-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:country"],
+        "metrics": ["ga:pageviews"],
+        "start-date": "90daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:pageviews"
+      },
+      "meta": {
+        "name": "Top Countries (90 Days)",
+        "description": "Top countries in the last 90 days."
+      }
+    },
+    {
+      "name": "international-visits-90-days",
+      "frequency": "daily",
+      "slim": true,
+      "query": {
+        "dimensions": ["ga:country"],
+        "metrics": ["ga:sessions"],
+        "start-date": "90daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:sessions",
+        "filters": ["ga:country!=United States"]
+      },
+      "meta": {
+        "name": "Non-US countries in the last 90 days.",
+        "description": "90 days of visits from non-US countries broken down by country for all sites."
+      }
+    },
+    {
+      "name": "all-pages-realtime",
+      "frequency": "realtime",
+      "realtime": true,
+      "threshold": {
+        "field": "rt:activeUsers",
+        "value": "10"
+      },
+      "query": {
+        "dimensions": ["rt:pagePath", "rt:pageTitle"],
+        "metrics": ["rt:activeUsers"],
+        "sort": "-rt:activeUsers",
+        "max-results": "10000"
+      },
+      "meta": {
+        "name": "All Pages (Live)",
+        "description": "Pages, measured by active onsite users, for all sites."
+      }
+    },
+
+    {
+      "name": "all-domains-30-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:hostname"],
+        "metrics": ["ga:sessions"],
+        "start-date": "30daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:sessions",
+        "max-results": "10000",
+        "filters": ["ga:sessions>=1000"]
+      },
+      "meta": {
+        "name": "All Domains (30 Days)",
+        "description": "Last 30 days' domains, measured by visits, for all sites."
+      }
     }
   ]
 }

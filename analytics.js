@@ -129,7 +129,15 @@ var Analytics = {
         "ga:source": "source",
         "ga:pagePath": "page",
         "ga:pageTitle": "page_title",
-        "ga:pageviews": "visits"
+        "ga:pageviews": "visits",
+        "ga:country": "country",
+        "ga:city": 'city',
+        "ga:eventLabel": "event_label",
+        "ga:totalEvents": "total_events",
+        "rt:country": "country",
+        "rt:city": "city",
+        "rt:totalEvents": "total_events",
+        "rt:eventLabel": "event_label"
     },
 
     // The OSes we care about for the OS breakdown. The rest can be "Other".
@@ -142,13 +150,13 @@ var Analytics = {
     // The versions of Windows we care about for the Windows version breakdown.
     // The rest can be "Other". These are the exact strings used by Google Analytics.
     windows_versions: [
-        "XP", "Vista", "7", "8", "8.1"
+        "XP", "Vista", "7", "8", "8.1", "10"
     ],
 
     // The browsers we care about for the browser report. The rest are "Other"
     //  These are the exact strings used by Google Analytics.
     browsers: [
-        "Internet Explorer", "Chrome", "Safari", "Firefox", "Android Browser",
+        "Internet Explorer", "Edge", "Chrome", "Safari", "Firefox", "Android Browser",
         "Safari (in-app)", "Amazon Silk", "Opera", "Opera Mini",
         "IE with Chrome Frame", "BlackBerry", "UC Browser"
     ],
@@ -185,9 +193,21 @@ var Analytics = {
         // data.rows is missing if there are no results
         if (data.totalResults > 0) {
 
+            // get indices of column headers, for reference in client-side thresholds
+            var columnIndices = {};
+            for (var c = 0; c < data.columnHeaders.length; c++)
+                columnIndices[data.columnHeaders[c].name] = c;
+
             // Calculate each individual data point.
             for (var i=0; i<data.rows.length; i++) {
                 var row = data.rows[i];
+
+                // allow client-side imposition of a value threshold, where it can't
+                // be done at the server-side (e.g. metric filters on RT reports)
+                if (report.threshold) {
+                    if (parseInt(row[columnIndices[report.threshold.field]]) < report.threshold.value)
+                        continue;
+                }
 
                 var point = {};
                 for (var j=0; j<row.length; j++) {
@@ -213,12 +233,12 @@ var Analytics = {
 
             // Go through those data points to calculate totals.
             // Right now, this is totally report-specific.
-            if ("visitors" in result.data[0]) {
+            if ((result.data.length > 0) && ("visitors" in result.data[0])) {
                 result.totals.visitors = 0;
                 for (var i=0; i<result.data.length; i++)
                     result.totals.visitors += parseInt(result.data[i].visitors);
             }
-            if ("visits" in result.data[0]) {
+            if ((result.data.length > 0) && ("visits" in result.data[0])) {
                 result.totals.visits = 0;
                 for (var i=0; i<result.data.length; i++)
                     result.totals.visits += parseInt(result.data[i].visits);
@@ -300,9 +320,9 @@ var Analytics = {
                     result.totals.ie_version[version] += parseInt(result.data[i].visits);
                 }
             }
-
+            
             // presumably we're organizing these by date
-            if (result.data[0].date) {
+            if ((result.data.length > 0) && (result.data[0].date)) {
                 result.totals.start_date = result.data[0].date;
                 result.totals.end_date = result.data[result.data.length-1].date;
             }
