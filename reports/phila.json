@@ -164,7 +164,7 @@
       }
     },
     {
-      "name": "top-downloads-yesterday",
+      "name": "top-downloads-30-days",
       "frequency": "daily",
       "query": {
         "dimensions": ["ga:pageTitle", "ga:eventLabel", "ga:pagePath", "ga:dimension1"],
@@ -176,8 +176,8 @@
         "max-results": "100"
       },
       "meta": {
-        "name": "Top Downloads Yesterday",
-        "description": "Top downloads (30 Days)"
+        "name": "Top Downloads Last 30 Days",
+        "description": "Last 30 days' top downloads for all participating sites."
       }
     },
     {
