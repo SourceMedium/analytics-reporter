@@ -176,13 +176,13 @@
         "max-results": "100"
       },
       "meta": {
-        "name": "Top Downloads Last 30 Days",
+        "name": "User Searches",
         "description": "Last 30 days' top downloads for all participating sites."
       }
     },
         {
-      "name": "top-downloads-30-days",
-      "frequency": "daily",
+      "name": "user-searches",
+      "frequency": "realtime",
       "query": {
         "dimensions": ["ga:eventAction", "ga:eventLabel", "ga:dimension1", "ga:dimension2", "ga:dimension3", "ga:dimension4", "ga:dimension5"],
         "metrics": ["ga:totalEvents"],
@@ -193,8 +193,8 @@
         "max-results": "100"
       },
       "meta": {
-        "name": "Top Downloads Last 30 Days",
-        "description": "Last 30 days' top downloads for all participating sites."
+        "name": "User Searches",
+        "description": "When user geolocates or geocodes an address."
       }
     },
     {
