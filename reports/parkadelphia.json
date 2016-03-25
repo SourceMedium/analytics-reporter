@@ -176,15 +176,15 @@
         "max-results": "100"
       },
       "meta": {
-        "name": "User Searches",
+        "name": "Top Downloads 30 Days",
         "description": "Last 30 days' top downloads for all participating sites."
       }
     },
         {
       "name": "user-searches",
-      "frequency": "realtime",
+      "frequency": "daily",
       "query": {
-        "dimensions": ["ga:eventAction", "ga:eventLabel", "ga:dimension1", "ga:dimension2", "ga:dimension3", "ga:dimension4", "ga:dimension5"],
+        "dimensions": ["ga:eventAction", "ga:eventLabel"],
         "metrics": ["ga:totalEvents"],
         "filters": ["ga:eventCategory==Search"],
         "start-date": "30daysAgo",
