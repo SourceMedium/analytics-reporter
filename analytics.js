@@ -132,6 +132,7 @@ var Analytics = {
         "ga:pageviews": "visits",
         "ga:country": "country",
         "ga:city": 'city',
+        "ga:eventCategory": "event_category",
         "ga:eventLabel": "event_label",
         "ga:eventAction": "event_action",
         "ga:totalEvents": "total_events",
@@ -139,7 +140,11 @@ var Analytics = {
         "rt:city": "city",
         "rt:totalEvents": "total_events",
         "rt:eventLabel": "event_label",
-        "ga:dimension1": "full_url"
+        "ga:dimension1": "full_url",
+        "ga:dimension2": "fragment",
+        "ga:dimension3": "longitude",
+        "ga:dimension4": "latitude",
+        "ga:dimension5": "coordinates"
     },
 
     // The OSes we care about for the OS breakdown. The rest can be "Other".
