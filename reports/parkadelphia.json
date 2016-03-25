@@ -186,7 +186,7 @@
       "query": {
         "dimensions": ["ga:eventAction", "ga:eventLabel", "ga:dimension1", "ga:dimension2", "ga:dimension3", "ga:dimension4", "ga:dimension5"],
         "metrics": ["ga:totalEvents"],
-        "filters": ["ga:eventCategory=Search"],
+        "filters": ["ga:eventCategory==Search"],
         "start-date": "30daysAgo",
         "end-date": "yesterday",
         "sort": "-ga:totalEvents",
