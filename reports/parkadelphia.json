@@ -180,11 +180,11 @@
         "description": "Last 30 days' top downloads for all participating sites."
       }
     },
-        {
+      {
       "name": "user-searches",
       "frequency": "daily",
       "query": {
-        "dimensions": ["ga:eventAction", "ga:dimension5"],
+        "dimensions": ["ga:eventAction", "ga:dimension3", "ga:dimension4"],
         "metrics": ["ga:totalEvents"],
         "filters": ["ga:eventCategory==Search"],
         "start-date": "30daysAgo",
@@ -195,6 +195,23 @@
       "meta": {
         "name": "User Searches",
         "description": "When user geolocates or geocodes an address."
+      }
+    },
+      {
+      "name": "show-info",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:eventAction", "ga:dimension3", "ga:dimension4"],
+        "metrics": ["ga:totalEvents"],
+        "filters": ["ga:eventCategory==Click"],
+        "start-date": "30daysAgo",
+        "end-date": "today",
+        "sort": "-ga:totalEvents",
+        "max-results": "300"
+      },
+      "meta": {
+        "name": "User Gets Info",
+        "description": "When user clicks or touches features for details."
       }
     },
     {
