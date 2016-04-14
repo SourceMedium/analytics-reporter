@@ -169,7 +169,6 @@
       "query": {
         "dimensions": ["ga:pageTitle", "ga:pagePath", "ga:eventAction", "ga:eventLabel"],
         "metrics": ["ga:totalEvents"],
-        "filters": ["ga:eventCategory==Resource"],
         "start-date": "180daysAgo",
         "end-date": "yesterday",
         "sort": "-ga:totalEvents",
