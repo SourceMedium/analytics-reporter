@@ -167,7 +167,7 @@
       "name": "top-downloads-30-days",
       "frequency": "daily",
       "query": {
-        "dimensions": ["ga:pageTitle", "ga:eventAction", "ga:eventLabel"],
+        "dimensions": ["ga:pageTitle", "ga:page", "ga:eventAction", "ga:eventLabel"],
         "metrics": ["ga:totalEvents"],
         "filters": ["ga:eventCategory==Resource"],
         "start-date": "30daysAgo",
