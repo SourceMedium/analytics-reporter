@@ -184,17 +184,16 @@
       "name": "user-searches",
       "frequency": "daily",
       "query": {
-        "dimensions": ["ga:eventAction", "ga:dimension3", "ga:dimension4"],
+        "dimensions": ["ga:eventAction", "ga:dimension3", "ga:dimension4", "ga:date", "ga:hour"],
         "metrics": ["ga:totalEvents"],
-        "filters": ["ga:eventCategory==Search"],
         "start-date": "30daysAgo",
         "end-date": "today",
         "sort": "-ga:totalEvents",
-        "max-results": "300"
+        "max-results": "3000"
       },
       "meta": {
         "name": "User Searches",
-        "description": "When user geolocates or geocodes an address."
+        "description": "When user geolocates or geocodes an address or touches for Info."
       }
     },
       {
